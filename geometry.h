@@ -28,7 +28,7 @@ public:
 
     void setY(double new_y); //set the y coordinate
 
-    double distance_Points(Point &i1);
+    double distance_Points(Point &i1, Point &i2);
 };
 
 

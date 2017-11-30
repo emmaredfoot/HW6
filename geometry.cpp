@@ -226,11 +226,11 @@ Triangle::Triangle(Point &a, Point &b, Point &c) :
 Polygon(updateConstructorPoints(a,b,c), 3) {}
 
 //write a function that will find the distance between two points
-double Point::distance_Points(Point &i1) {
+double Point::distance_Points(Point &i1, Point &i2) {
     //Find the length between two points, the instance point, and some other point
-    double diff_x = i1.getX()-getX();
+    double diff_x = i1.getX()-i2.getX();
     double x = abs (diff_x);
-    double diff_y = i1.getY()-getY();
+    double diff_y = i1.getY()-i2.getY();
     double y = abs (diff_y);
     return sqrt(x*x+y*y);
 }
@@ -246,9 +246,9 @@ double Triangle::area() {
     Point T3 = points.getPoints()[2];
     //get the lengths of each of the sides
 
-    double length_1 = T1.distance_Points(T2);
-    double length_2 = T2.distance_Points(T3);
-    double length_3 = T3.distance_Points(T1);
+    double length_1 = T1.distance_Points(T1, T2);
+    double length_2 = T2.distance_Points(T2, T3);
+    double length_3 = T3.distance_Points(T3, T1);
     double s = length_1+2*length_2+length_3;
     return(s);
 }
