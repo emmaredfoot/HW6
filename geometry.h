@@ -28,7 +28,7 @@ public:
 
     void setY(double new_y); //set the y coordinate
 
-    double distance_Points(Point &i1, Point &i2);
+    double distance_Points(Point &i1);
 };
 
 
@@ -62,6 +62,8 @@ public:
     void clear(); //Remove everything from the array and set its size to 0
 
     Point* get(const int pos); //Get a pointer to the array at some arbitrary position
+
+    Point* getPoints() {return points;}
 };
 
 class Polygon{
@@ -75,12 +77,13 @@ public:
     //of the polygon passing the Polygon constructor arguments to the PointArray constructor
     Polygon(Point*, int);
     Polygon(const PointArray &);
-    ~Polygon() { numPolygons--; }
+    ~Polygon ();
     //It appears that when using a virtual function, you cannot have a different inputs into the function
     virtual double area() = 0;
     static int getNumPolygons() { return numPolygons;}
     int getNumSides() { return points.getSize();}
     PointArray* getPoints() { return &points; }
+    //Point* getPoints() {return points;}
 };
 
 class Rectangle : public Polygon {
